@@ -1,0 +1,104 @@
+/* 전체 높이 & 배경 */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #f7fbfc;
+}
+
+/* 근로자 레이아웃: 왼쪽 네비 + 오른쪽 컨텐츠 */
+.worker-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f7fbfc;
+}
+
+/* 사이드바 전체 (근로자 버전) */
+.worker-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;   /* ← 중앙이 아니라 위쪽 기준 */
+  width: 96px;            /* 약간 넓게 */
+  padding: 40px 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #f7fbfc;    /* 페이지 전체 배경에 맞게 조정 */
+  z-index: 10;
+}
+
+/* 아이콘 리스트 */
+.nav-icon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 120px;        /* ← 아이콘 묶음을 위에서 120px 아래로 */
+
+}
+
+/* 기본 상태: 흰 원 + 파란 아이콘 */
+.nav-icon-button {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  color: #769fcd; /* 아이콘 색 */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+/* hover 효과 (선택) */
+.nav-icon-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* active 상태: 파란 원 + 흰 아이콘 */
+.nav-icon-button[data-active="true"] {
+  background: #769fcd;
+  color: #ffffff;
+}
+
+/* 클릭 시 살짝 눌리는 느낌 */
+.nav-icon-button:active {
+  transform: translateY(1px);
+}
+
+/* 오른쪽 컨텐츠 영역 */
+.app-main-with-sidebar {
+  flex: 1;
+  margin-left: 96px;      /* 사이드바 폭과 맞추기 */
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* 가운데 정렬 */
+  box-sizing: border-box;
+}
+
+/* 하얀 카드 프레임 (페이지 내용 감싸기용) */
+.worker-content-frame {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 600px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 32px 40px;
+  box-sizing: border-box;
+}

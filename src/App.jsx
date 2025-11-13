@@ -1,33 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import WorkerLayout from "./layouts/WorkerLayout.jsx";
+import MonthlyCalendarPage from "./pages/workers/MonthlyCalendarPage.jsx";
+import WeeklyCalendarPage from "./pages/workers/WeeklyCalendarPage.jsx";
+import RemittancePage from "./pages/workers/RemittancePage.jsx";
+import MyPage from "./pages/workers/MyPage.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/worker" element={<WorkerLayout />}>
+          <Route
+            index
+            element={<Navigate to="/worker/monthly-calendar" replace />}
+          />
+          <Route path="monthly-calendar" element={<MonthlyCalendarPage />} />
+          <Route path="weekly-calendar" element={<WeeklyCalendarPage />} />
+          <Route path="remittance" element={<RemittancePage />} />
+          <Route path="mypage" element={<MyPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/worker" replace />} />
+      </Routes>
     </>
   )
 }
