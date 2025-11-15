@@ -7,13 +7,16 @@ import WeeklyCalendarPage from "./pages/workers/WeeklyCalendarPage.jsx";
 import RemittancePage from "./pages/workers/RemittancePage.jsx";
 import MyPage from "./pages/workers/MyPage.jsx";
 import DailyCalendarPage from "./pages/employer/DailyCalendarPage.jsx";
+import RemittanceManagePage from "./pages/employer/RemittanceManagePage.jsx";
+import WorkerManagePage from "./pages/employer/WorkerManagePage.jsx";
+import EmployerMyPage from "./pages/employer/EmployerMyPage.jsx";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        
+
         <Route path="/worker" element={<WorkerLayout />}>
           <Route
             index
@@ -31,12 +34,15 @@ function App() {
             element={<Navigate to="/employer/daily-calendar" replace />}
           />
           <Route path="daily-calendar" element={<DailyCalendarPage />} />
+          <Route path="remittance-manage" element={<RemittanceManagePage />} />
+          <Route path="worker-manage" element={<WorkerManagePage />} />
+          <Route path="employer-mypage" element={<EmployerMyPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

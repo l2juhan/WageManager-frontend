@@ -1,15 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiCalendar } from "react-icons/fi";
+import { employerNavItems } from "../../constants/navItems.js";
 import "../../styles/employerNav.css";
-
-const employerNavItems = [
-  {
-    id: "daily-calendar",
-    label: "일정 관리",
-    icon: FiCalendar,
-  },
-];
 
 export default function EmployerNav() {
   const [activeId, setActiveId] = useState("daily-calendar");
@@ -39,4 +31,3 @@ export default function EmployerNav() {
     </aside>
   );
 }
-
