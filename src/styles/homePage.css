@@ -1,0 +1,32 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.home-container {
+  text-align: center;
+}
+
+.home-title {
+  margin-bottom: 20px;
+}
+
+.home-subtitle {
+  margin-bottom: 30px;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home-button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+

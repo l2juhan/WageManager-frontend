@@ -1,14 +1,19 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/auth/LoginPage.jsx";
 import WorkerLayout from "./layouts/WorkerLayout.jsx";
+import EmployerLayout from "./layouts/EmployerLayout.jsx";
 import MonthlyCalendarPage from "./pages/workers/MonthlyCalendarPage.jsx";
 import WeeklyCalendarPage from "./pages/workers/WeeklyCalendarPage.jsx";
 import RemittancePage from "./pages/workers/RemittancePage.jsx";
 import MyPage from "./pages/workers/MyPage.jsx";
+import DailyCalendarPage from "./pages/employer/DailyCalendarPage.jsx";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LoginPage />} />
+        
         <Route path="/worker" element={<WorkerLayout />}>
           <Route
             index
@@ -20,7 +25,15 @@ function App() {
           <Route path="mypage" element={<MyPage />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/worker" replace />} />
+        <Route path="/employer" element={<EmployerLayout />}>
+          <Route
+            index
+            element={<Navigate to="/employer/daily-calendar" replace />}
+          />
+          <Route path="daily-calendar" element={<DailyCalendarPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )
