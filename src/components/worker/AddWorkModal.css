@@ -1,0 +1,139 @@
+.add-work-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(14, 26, 59, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.add-work-modal-card {
+  width: min(460px, calc(100% - 32px));
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 24px 28px 24px;
+  box-shadow: 0 10px 35px rgba(12, 27, 66, 0.2);
+  border: 1px solid #e1e5ef;
+}
+
+.add-work-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.add-work-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1e27;
+}
+
+.add-work-select {
+  border: 1px solid #dde1ec;
+  border-radius: 10px;
+  padding: 6px 10px;
+  background-color: #f8f9fc;
+  font-size: 14px;
+  min-width: 140px;
+}
+
+.add-work-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-work-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-work-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5366;
+}
+
+.add-work-time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.add-work-time-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.add-work-time-colon {
+  font-size: 18px;
+  color: #6b748a;
+  line-height: 1;
+}
+
+.add-work-modal-card .work-edit-time-tilde {
+  font-size: 18px;
+  color: #6b748a;
+}
+
+.add-work-modal-card .work-edit-input,
+.add-work-modal-card .work-edit-select {
+  background-color: #f6f7fa;
+  border: 1px solid #d5daeb;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: #111827;
+}
+
+.add-work-modal-card .work-edit-input:focus,
+.add-work-modal-card .work-edit-select:focus {
+  border-color: #b0badd;
+  background-color: #fff;
+}
+
+.add-work-modal-card .work-edit-input-date {
+  width: 130px;
+  max-width: 100%;
+}
+
+.add-work-modal-card .add-work-date-input {
+  width: 120px;
+  min-width: unset;
+  flex: 0 0 auto;
+}
+
+.add-work-modal-card .work-edit-select {
+  width: 64px;
+  text-align: center;
+}
+
+.add-work-time-group.start-group {
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 8px;
+}
+
+.add-work-time-group.end-group {
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.add-work-modal-card .work-edit-break-row .work-edit-select {
+  width: 64px;
+}
+
+.add-work-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}

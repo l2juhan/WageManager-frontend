@@ -1,0 +1,143 @@
+.work-edit-box {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 16px 18px 16px;
+  border-radius: 14px;
+  border: 1px solid #e1e5ef;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(15, 35, 95, 0.05);
+}
+
+.work-edit-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.work-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.work-edit-field.full {
+  flex: 1;
+}
+
+.work-edit-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555b65;
+}
+
+.work-edit-input,
+.work-edit-select {
+  border-radius: 8px;
+  border: 1px solid #dde1ec;
+  padding: 8px 10px;
+  font-size: 13px;
+  background-color: #f8f9fc;
+}
+
+.work-edit-input-date {
+  min-width: 150px;
+}
+
+.work-edit-input.readonly {
+  background-color: #f1f2f6;
+  color: #777b89;
+}
+
+.work-edit-input:focus,
+.work-edit-select:focus {
+  outline: none;
+  border-color: #7097ff;
+  background-color: #fff;
+}
+
+.work-edit-wage-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  width: fit-content;
+}
+
+.work-edit-wage-unit {
+  font-size: 13px;
+  color: #555b65;
+}
+
+.work-edit-input-place,
+.work-edit-input-wage {
+  width: fit-content;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.work-edit-time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.work-edit-time-tilde {
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.work-edit-break-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.work-edit-break-row .work-edit-select {
+  min-width: 60px;
+}
+
+.work-edit-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.work-edit-btn {
+  min-width: 92px;
+  padding: 8px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.work-edit-btn-confirm {
+  background-color: #3bb44a;
+  color: #fff;
+}
+
+.work-edit-btn-confirm:hover {
+  background-color: #33a043;
+}
+
+.work-edit-btn-delete {
+  background-color: #f26b6b;
+  color: #fff;
+}
+
+.work-edit-btn-delete:hover {
+  background-color: #e05a5a;
+}
+
+.work-edit-btn-cancel {
+  background-color: #f1f2f6;
+  color: #555b65;
+}
+
+.work-edit-btn-cancel:hover {
+  background-color: #e2e4ec;
+}

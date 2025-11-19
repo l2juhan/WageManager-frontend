@@ -18,6 +18,9 @@ If you are developing a production application, we recommend using TypeScript wi
 
 npm
 -npm install
+
 -npm i -D eslint-plugin-react
+
 -npm install react-router-dom
+
 -npm i react-icons
