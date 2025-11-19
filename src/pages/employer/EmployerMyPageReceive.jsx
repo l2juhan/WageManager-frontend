@@ -1,48 +1,92 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaEye, FaEyeSlash, FaCamera } from "react-icons/fa";
 import "../../styles/employerMyPage.css";
-
-const mockRequests = [
-  {
-    id: 1,
-    workerName: "박지민",
-    requestedDate: "2025-11-20",
-    shift: "오전 9시 - 오후 3시",
-    status: "대기중",
-  },
-  {
-    id: 2,
-    workerName: "최도윤",
-    requestedDate: "2025-11-22",
-    shift: "오후 1시 - 오후 9시",
-    status: "대기중",
-  },
-];
+import EmployerMyPage from "./EmployerMyPage.jsx";
 
 export default function EmployerMyPageReceive() {
-  const navigate = useNavigate();
+  const initialUser = {
+    name: "김나현",
+    birthDate: "2003-03-01",
+    gender: "woman",
+    phone: "010-1234-5678",
+    email: "abc@gmail.com",
+    password: "password123",
+  };
 
-  const handleNavClick = (path) => {
-    navigate(path);
+  const [user, setUser] = useState(initialUser);
+  const [editableSections, setEditableSections] = useState({
+    basic: false,
+    phone: false,
+    email: false,
+    password: false,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
+  const [activeView, setActiveView] = useState("profile");
+
+  const toggleEdit = (section) => {
+    setEditableSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const handleChange = (field, value) => {
+    setUser((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleProfileImageChange = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const imageUrl = URL.createObjectURL(file);
+    setProfileImage(imageUrl);
+  };
+
+  const handleViewChange = (view) => {
+    setActiveView(view);
   };
 
   return (
     <div className="mypage-main">
-      <h1 className="mypage-main-heading">마이페이지 - 받은 근무 요청</h1>
+      <h1 className="mypage-main-heading">마이페이지 - 내 프로필 수정</h1>
       <div className="mypage-content">
         <nav className="mypage-nav">
           <div className="mypage-profile-card">
             <div className="mypage-avatar-wrapper">
-              <div className="mypage-avatar-placeholder" />
+              {profileImage ? (
+                <img
+                  src={profileImage}
+                  alt="프로필"
+                  className="mypage-avatar-image"
+                />
+              ) : (
+                <div className="mypage-avatar-placeholder" />
+              )}
+              <label className="mypage-avatar-camera">
+                <FaCamera />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleProfileImageChange}
+                />
+              </label>
             </div>
-            <div className="mypage-profile-name">김나현</div>
+            <div className="mypage-profile-name">{user.name}</div>
             <hr />
           </div>
           <ul>
             <li>
               <button
                 type="button"
-                className="mypage-nav-li"
-                onClick={() => handleNavClick("/employer/employer-mypage")}
+                className={
+                  activeView === "profile"
+                    ? "mypage-nav-checked"
+                    : "mypage-nav-li"
+                }
+                onClick={() => handleViewChange("profile")}
               >
                 내 프로필 수정
               </button>
@@ -50,10 +94,12 @@ export default function EmployerMyPageReceive() {
             <li>
               <button
                 type="button"
-                className="mypage-nav-checked"
-                onClick={() =>
-                  handleNavClick("/employer/employer-mypage-receive")
+                className={
+                  activeView === "received"
+                    ? "mypage-nav-checked"
+                    : "mypage-nav-li"
                 }
+                onClick={() => handleViewChange("received")}
               >
                 받은 근무 요청
               </button>
@@ -61,41 +107,111 @@ export default function EmployerMyPageReceive() {
           </ul>
         </nav>
         <div className="mypage-container">
-          <h1 className="mypage-title">받은 근무 요청</h1>
-          <div className="mypage-receive-list">
-            {mockRequests.length === 0 ? (
-              <p>아직 받은 근무 요청이 없습니다.</p>
-            ) : (
-              mockRequests.map((request) => (
-                <div key={request.id} className="mypage-receive-card">
-                  <div>
-                    <strong>근로자</strong>
-                    <p>{request.workerName}</p>
-                  </div>
-                  <div>
-                    <strong>요청일</strong>
-                    <p>{request.requestedDate}</p>
-                  </div>
-                  <div>
-                    <strong>근무시간</strong>
-                    <p>{request.shift}</p>
-                  </div>
-                  <div>
-                    <strong>상태</strong>
-                    <p>{request.status}</p>
-                  </div>
-                  <div className="mypage-receive-actions">
-                    <button type="button" className="mypage-edit-button">
-                      승인
-                    </button>
-                    <button type="button" className="mypage-edit-button decline">
-                      거절
-                    </button>
-                  </div>
+          {activeView === "profile" ? (
+            <>
+              <h1 className="mypage-title">기본정보</h1>
+              <div className="mypage-basic-info">
+                <div className="mypage-name">
+                  <span className="mypage-label">이름</span>
+                  <input
+                    type="text"
+                    value={user.name}
+                    disabled={!editableSections.basic}
+                    onChange={(e) => handleChange("name", e.target.value)}
+                  />
                 </div>
-              ))
-            )}
-          </div>
+                <div className="mypage-brith">
+                  <span className="mypage-label">생년월일</span>
+                  <input
+                    type="date"
+                    value={user.birthDate}
+                    disabled={!editableSections.basic}
+                    onChange={(e) => handleChange("birthDate", e.target.value)}
+                  />
+                </div>
+                <div className="mypage-gender">
+                  <span className="mypage-label">성별</span>
+                  <select
+                    name="gender"
+                    value={user.gender}
+                    disabled={!editableSections.basic}
+                    onChange={(e) => handleChange("gender", e.target.value)}
+                  >
+                    <option value="man">남성</option>
+                    <option value="woman">여성</option>
+                  </select>
+                </div>
+                <button
+                  className="mypage-edit-button"
+                  onClick={() => toggleEdit("basic")}
+                >
+                  {editableSections.basic ? "완료" : "수정"}
+                </button>
+              </div>
+              <hr />
+              <div className="mypage-phone">
+                <span className="mypage-label">전화번호</span>
+                <input
+                  type="tel"
+                  value={user.phone}
+                  disabled={!editableSections.phone}
+                  onChange={(e) => handleChange("phone", e.target.value)}
+                />
+                <button
+                  className="mypage-edit-button"
+                  onClick={() => toggleEdit("phone")}
+                >
+                  {editableSections.phone ? "완료" : "수정"}
+                </button>
+              </div>
+              <hr />
+              <div className="mypage-email">
+                <span className="mypage-label">이메일</span>
+                <input
+                  type="email"
+                  value={user.email}
+                  disabled={!editableSections.email}
+                  onChange={(e) => handleChange("email", e.target.value)}
+                />
+                <button
+                  className="mypage-edit-button"
+                  onClick={() => toggleEdit("email")}
+                >
+                  {editableSections.email ? "완료" : "수정"}
+                </button>
+              </div>
+              <hr />
+              <div className="mypage-password">
+                <span className="mypage-label">비밀번호</span>
+                <div className="mypage-password-input-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={user.password}
+                    disabled={!editableSections.password}
+                    onChange={(e) => handleChange("password", e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="mypage-view-button"
+                    onMouseEnter={() => setShowPassword(true)}
+                    onMouseLeave={() => setShowPassword(false)}
+                    onFocus={() => setShowPassword(true)}
+                    onBlur={() => setShowPassword(false)}
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
+                <button
+                  className="mypage-edit-button"
+                  onClick={() => toggleEdit("password")}
+                >
+                  {editableSections.password ? "완료" : "수정"}
+                </button>
+              </div>
+            </>
+          ) : (
+            <EmployerMyPage />
+          )}
         </div>
       </div>
     </div>
