@@ -287,8 +287,10 @@ export default function ProfileEdit({ user, onUserUpdate }) {
               onMouseLeave={() => setShowPassword(false)}
               onFocus={() => setShowPassword(true)}
               onBlur={() => setShowPassword(false)}
+              aria-label={showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
+              title={showPassword ? "비밀번호 숨기기" : "비밀번호 보기"}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
           {errors.password && (
