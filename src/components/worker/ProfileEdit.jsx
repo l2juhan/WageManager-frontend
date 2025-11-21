@@ -125,6 +125,25 @@ export default function ProfileEdit({ user, onUserUpdate }) {
 
   const formatDate = (dateString) => {
     if (!dateString) return "";
+    
+    // ISO 날짜 형식(YYYY-MM-DD)인 경우 타임존 문제를 피하기 위해 직접 파싱
+    const isoDateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (isoDateRegex.test(dateString)) {
+      const [year, month, day] = dateString.split("-");
+      // 로컬 시간으로 Date 객체 생성하여 유효성 검증 (month는 0부터 시작하므로 -1)
+      const date = new Date(Number(year), Number(month) - 1, Number(day));
+      // 유효한 날짜인지 확인 (타임존 문제 없이 로컬 시간으로 생성했으므로 검증 가능)
+      if (
+        date.getFullYear() === Number(year) &&
+        date.getMonth() === Number(month) - 1 &&
+        date.getDate() === Number(day)
+      ) {
+        // 파싱한 값을 그대로 사용 (이미 zero-padding 되어 있음)
+        return `${year}.${month}.${day}`;
+      }
+    }
+    
+    // 다른 형식이거나 유효하지 않은 날짜인 경우 기존 방식 사용
     const date = new Date(dateString);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
