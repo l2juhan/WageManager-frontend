@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { FaCamera, FaUser } from "react-icons/fa";
-import "../../pages/workers/MyPage.css";
+import "../../../pages/workers/MyPage.css";
 
 export default function ProfileBox({
   user,

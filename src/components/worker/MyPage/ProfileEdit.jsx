@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../../pages/workers/MyPage.css";
+import "../../../pages/workers/MyPage.css";
 
 export default function ProfileEdit({ user, onUserUpdate }) {
   const [editableSections, setEditableSections] = useState({
@@ -370,3 +370,4 @@ ProfileEdit.propTypes = {
   }).isRequired,
   onUserUpdate: PropTypes.func.isRequired,
 };
+

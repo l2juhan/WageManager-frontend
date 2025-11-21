@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import "./MonthlyCalendarPage.css";
-import WorkEditRequestBox from "../../components/worker/WorkEditRequestBox";
-import AddWorkModal from "../../components/worker/AddWorkModal";
-import CalendarCard from "../../components/worker/CalendarCard";
+import WorkEditRequestBox from "../../components/worker/MonthlyCalendarPage/WorkEditRequestBox";
+import AddWorkModal from "../../components/worker/MonthlyCalendarPage/AddWorkModal";
+import CalendarCard from "../../components/worker/MonthlyCalendarPage/CalendarCard";
 
 const pad2 = (n) => (n < 10 ? `0${n}` : `${n}`);
 const makeDateKey = (y, m, d) => `${y}-${pad2(m + 1)}-${pad2(d)}`;

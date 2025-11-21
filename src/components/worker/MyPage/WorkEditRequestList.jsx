@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "../../pages/workers/MyPage.css";
+import "../../../pages/workers/MyPage.css";
 
 export default function WorkEditRequestList({ requests }) {
   return (

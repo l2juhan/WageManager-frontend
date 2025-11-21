@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ProfileBox from "../../components/worker/ProfileBox";
-import ProfileEdit from "../../components/worker/ProfileEdit";
-import WorkplaceManage from "../../components/worker/WorkplaceManage";
-import WorkEditRequestList from "../../components/worker/WorkEditRequestList";
+import ProfileBox from "../../components/worker/MyPage/ProfileBox";
+import ProfileEdit from "../../components/worker/MyPage/ProfileEdit";
+import WorkplaceManage from "../../components/worker/MyPage/WorkplaceManage";
+import WorkEditRequestList from "../../components/worker/MyPage/WorkEditRequestList";
 import "./MyPage.css";
 
 export default function MyPage() {
@@ -134,3 +134,4 @@ export default function MyPage() {
     </div>
   );
 }
+
