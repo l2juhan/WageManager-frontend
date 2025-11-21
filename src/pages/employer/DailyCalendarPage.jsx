@@ -227,7 +227,7 @@ export default function DailyCalendarPage() {
       durationHours: 9,
       workplaceDetail: selectedWorkplace, // 현재는 근무지 이름 사용, 백엔드 연동 시 상세 정보 필요
       breakMinutes: 60,
-      hourlyWage: 10000,
+      hourlyWage: 10030,
       allowances: {
         overtime: { enabled: false, rate: 150 },
         night: { enabled: false, rate: 0 },
