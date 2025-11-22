@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaCamera } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaCamera, FaUser } from "react-icons/fa";
 import "../../styles/employerMyPage.css";
 import Swal from "sweetalert2";
 
@@ -57,7 +57,9 @@ export default function EmployerMyPage() {
                   className="mypage-avatar-image"
                 />
               ) : (
-                <div className="mypage-avatar-placeholder" />
+                <div className="mypage-avatar-placeholder">
+                  <FaUser />
+                </div>
               )}
               <label className="mypage-avatar-camera">
                 <FaCamera />

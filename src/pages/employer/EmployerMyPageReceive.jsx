@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 import "../../styles/employerMyPageReceive.css";
 
 const mockRequests = [
@@ -83,7 +84,9 @@ export default function EmployerMyPageReceive() {
         <nav className="mypage-nav">
           <div className="mypage-profile-card">
             <div className="mypage-avatar-wrapper">
-              <div className="mypage-avatar-placeholder" />
+              <div className="mypage-avatar-placeholder">
+                <FaUser />
+              </div>
             </div>
             <div className="mypage-profile-name">김나현</div>
             <hr />
