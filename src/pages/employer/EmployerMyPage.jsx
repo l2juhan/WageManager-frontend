@@ -199,7 +199,8 @@ export default function EmployerMyPage() {
               onClick={() => {
                 Swal.fire({
                   icon: "warning",
-                  title: "정말로 회원 탈퇴를 하시겠습니까?",
+                  title: "회원 탈퇴 하시겠습니까?",
+                  text: "탈퇴 시 모든 정보가 삭제되며 복구할 수 없습니다.",
                   showCancelButton: true,
                   confirmButtonText: "탈퇴",
                   cancelButtonText: "취소",
