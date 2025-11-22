@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import "./WorkEditRequestBox.css";
-import { createUpdateField } from "../../pages/workers/utils/updateField";
+import { createUpdateField } from "../../../pages/workers/utils/updateField";
 
 const pad2 = (n) => (n < 10 ? `0${n}` : `${n}`);
 
@@ -195,3 +195,4 @@ WorkEditRequestBox.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
+

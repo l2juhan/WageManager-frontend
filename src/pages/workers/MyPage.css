@@ -1,0 +1,572 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&family=Noto+Sans+KR:wght@100..900&display=swap");
+
+.worker-mypage-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.worker-mypage-content {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.worker-mypage-nav {
+  width: 350px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: "Do Hyeon", sans-serif;
+  color: #4d4d4d;
+}
+
+.worker-mypage-profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.worker-mypage-profile-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.worker-mypage-avatar-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.worker-mypage-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.worker-mypage-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.worker-mypage-avatar-icon {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+}
+
+.worker-mypage-avatar-camera {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  color: #666666;
+  font-size: 0.9rem;
+}
+
+.worker-mypage-avatar-camera input {
+  display: none;
+}
+
+.worker-mypage-profile-name {
+  font-size: 1.8rem;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  color: #000000;
+  text-align: center;
+}
+
+.worker-mypage-profile-card hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 16px 0 0;
+}
+
+.worker-mypage-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.worker-mypage-nav-checked {
+  width: 100%;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.worker-mypage-nav-li {
+  width: 100%;
+  border: none;
+  background-color: #ffffff;
+  color: #848484;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.worker-mypage-container {
+  flex: 1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.worker-mypage-title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 2em;
+  margin: 0 0 32px 0;
+  color: #333333;
+}
+
+.worker-mypage-section-title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.5em;
+  margin: 0 0 24px 0;
+  color: #333333;
+}
+
+.worker-mypage-basic-info {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  color: #848484;
+  font-size: 1.5em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.worker-mypage-name-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.worker-mypage-avatar-wrapper-edit {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.worker-mypage-avatar-image-edit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.worker-mypage-avatar-placeholder-edit {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.worker-mypage-avatar-icon-edit {
+  width: 60px;
+  height: 60px;
+  color: #ffffff;
+}
+
+.worker-mypage-name-text-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.worker-mypage-name-text {
+  font-size: 1em;
+  color: #333333;
+  font-weight: bold;
+}
+
+.worker-mypage-birth-text,
+.worker-mypage-gender-text {
+  font-size: 0.9em;
+  color: #848484;
+  font-weight: normal;
+}
+
+.worker-mypage-edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.worker-mypage-name,
+.worker-mypage-birth,
+.worker-mypage-gender {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.worker-mypage-field {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  color: #848484;
+  font-size: 1.5em;
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  align-items: flex-start;
+}
+
+.worker-mypage-field > input {
+  margin-left: 20px;
+}
+
+.worker-mypage-field .worker-mypage-password-input-wrapper {
+  margin-left: 0;
+}
+
+.worker-mypage-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 20px;
+  flex: 1;
+  max-width: 500px;
+}
+
+/* 이메일 input은 카카오페이 송금 링크와 동일한 길이로 */
+.worker-mypage-email-field {
+  align-items: flex-start;
+}
+
+.worker-mypage-email-input-container {
+  position: relative;
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.worker-mypage-email-input-container > input {
+  max-width: none;
+  flex: 1;
+}
+
+.worker-mypage-email-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+}
+
+.worker-mypage-input-error {
+  border-color: #ff4444 !important;
+}
+
+.worker-mypage-error-message {
+  font-size: 0.85em;
+  color: #ff4444;
+  font-weight: normal;
+  margin-top: 4px;
+}
+
+.worker-mypage-label {
+  display: inline-block;
+  width: 200px;
+  flex-shrink: 0;
+  font-size: 1em;
+  white-space: nowrap;
+}
+
+.worker-mypage-edit-button {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  width: 70px;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #848484;
+  margin-left: auto;
+}
+
+.worker-mypage-basic-info .worker-mypage-edit-button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+input,
+select {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1em;
+  padding: 7px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  flex: 1;
+  max-width: 500px;
+  height: 40px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.worker-mypage-readonly {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.worker-mypage-password-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.worker-mypage-password-input-wrapper input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.worker-mypage-view-button {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #848484;
+  cursor: pointer;
+  padding: 0;
+}
+
+.worker-mypage-container hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+.worker-mypage-account-section {
+  margin: 20px 0;
+}
+
+.worker-mypage-link {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  color: #333333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.worker-mypage-arrow {
+  color: #848484;
+}
+
+.worker-mypage-withdraw {
+  margin: 20px 0;
+}
+
+.worker-mypage-withdraw-link {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  color: #ff0000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 근무지 관리 스타일 */
+.worker-mypage-workplace-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.worker-mypage-workplace-card {
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.worker-mypage-workplace-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.worker-mypage-workplace-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1em;
+}
+
+.worker-mypage-workplace-label {
+  font-weight: bold;
+  color: #333333;
+  min-width: 120px;
+}
+
+.worker-mypage-workplace-value {
+  color: #555555;
+}
+
+.worker-mypage-empty {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #848484;
+  font-size: 1em;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* 정정 요청 스타일 */
+.worker-mypage-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.worker-mypage-request-card {
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.worker-mypage-request-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.worker-mypage-request-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1em;
+}
+
+.worker-mypage-request-label {
+  font-weight: bold;
+  color: #333333;
+  min-width: 120px;
+}
+
+.worker-mypage-request-value {
+  color: #555555;
+}
+
+.worker-mypage-request-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.worker-mypage-request-status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.worker-mypage-request-status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.worker-mypage-request-status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+

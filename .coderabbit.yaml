@@ -10,6 +10,11 @@ reviews:
   collapse_walkthrough: false
   auto_review:
     enabled: true
+    base_branches:
+      - main
+      - master
+      - develop
+      - dev
     drafts: false
 chat:
   auto_reply: true
