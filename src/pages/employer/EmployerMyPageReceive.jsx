@@ -152,7 +152,7 @@ export default function EmployerMyPageReceive() {
                       </div>
                     )}
                   </div>
-                  {expandedCardId === request.id && request.status === null && (
+                  {expandedCardId === request.id && (
                     <div className="mypage-receive-toggle">
                       <div className="mypage-receive-details">
                         <div className="mypage-receive-detail-row">
@@ -190,30 +190,45 @@ export default function EmployerMyPageReceive() {
                         </div>
                       </div>
                       <div className="mypage-receive-toggle-actions">
-                        <button
-                          type="button"
-                          className="mypage-receive-approve-button"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          승인
-                        </button>
-                        <button
-                          type="button"
-                          className="mypage-receive-reject-button"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          거절
-                        </button>
-                        <button
-                          type="button"
-                          className="mypage-receive-close-button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setExpandedCardId(null);
-                          }}
-                        >
-                          닫기
-                        </button>
+                        {request.status === null ? (
+                          <>
+                            <button
+                              type="button"
+                              className="mypage-receive-approve-button"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              승인
+                            </button>
+                            <button
+                              type="button"
+                              className="mypage-receive-reject-button"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              거절
+                            </button>
+                            <button
+                              type="button"
+                              className="mypage-receive-close-button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setExpandedCardId(null);
+                              }}
+                            >
+                              닫기
+                            </button>
+                          </>
+                        ) : (
+                          <button
+                            type="button"
+                            className="mypage-receive-close-button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setExpandedCardId(null);
+                            }}
+                          >
+                            닫기
+                          </button>
+                        )}
                       </div>
                     </div>
                   )}
