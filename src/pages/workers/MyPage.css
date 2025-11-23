@@ -373,8 +373,8 @@
   margin-right: 0;
 }
 
-input,
-select {
+.worker-mypage-container input,
+.worker-mypage-container select {
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
