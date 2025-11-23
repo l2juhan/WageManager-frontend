@@ -143,7 +143,7 @@
 .mypage-receive-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   margin: 20px;
 }
 
@@ -239,100 +239,174 @@
   color: #d9534f;
 }
 
-.mypage-receive-toggle {
-  padding: 24px 32px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e0e0e0;
-  margin-top: 16px;
+/* DailyCalendarPage와 동일한 토글 스타일 */
+.shift-detail-panel {
+  margin-top: 8px;
+  border: 1px solid #e5ecff;
+  border-radius: 20px;
+  padding: 0 24px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+}
+
+.shift-detail-panel.open {
+  max-height: 1000px;
+  padding: 24px;
+  opacity: 1;
+}
+
+.detail-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-  box-shadow: 0 3px 8px rgba(15, 35, 95, 0.05);
-}
-
-.mypage-receive-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.mypage-receive-detail-row {
-  display: flex;
-  gap: 24px;
   align-items: center;
+  margin-bottom: 16px;
 }
 
-.mypage-receive-detail-label {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1em;
-  color: #666666;
-  font-weight: 500;
-  min-width: 100px;
+.detail-header-left {
+  display: flex;
+  gap: 20px;
 }
 
-.mypage-receive-detail-value {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1em;
-  color: #333333;
-  font-weight: 500;
+.detail-header-actions {
+  display: flex;
+  gap: 8px;
 }
 
-.mypage-receive-toggle-actions {
+.detail-label {
+  font-size: 0.75rem;
+  color: #8a97bb;
+  margin: 0 0 6px;
+}
+
+.detail-name {
+  margin: 0;
+  color: #1b2559;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.detail-value {
+  margin: 0;
+  font-weight: 600;
+  color: #3a4374;
+}
+
+.detail-edit-button,
+.detail-save-button,
+.detail-cancel-button,
+.detail-delete-button {
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.detail-edit-button {
+  background: var(--color-main);
+  color: #eff3ff;
+}
+
+.detail-save-button {
+  background: var(--color-green);
+  color: #fff;
+}
+
+.detail-cancel-button {
+  background: #f5f5f5;
+  color: #5b5b5b;
+}
+
+.detail-delete-button {
+  background: var(--color-red);
+  color: #fff;
+}
+
+.detail-close-button {
+  border: none;
+  background: #f4f6ff;
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: var(--color-main);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.detail-section {
+  margin-top: 16px;
+}
+
+.allowance-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.allowance-item {
+  border: 1px solid #dfe6ff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #4a4f67;
+}
+
+.allowance-item.on {
+  background: #f1f4ff;
+  border-color: #aebdff;
+}
+
+.allowance-item.off {
+  opacity: 0.6;
+}
+
+.allowance-item strong {
+  font-weight: 600;
+}
+
+.detail-status-row {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin-top: 16px;
 }
 
-.mypage-receive-approve-button {
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: bold;
-  padding: 10px 24px;
-  border-radius: 8px;
-  border: none;
-  background-color: #4a90e2;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
+.status-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: #f4f6fb;
+  color: #6b738e;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.mypage-receive-approve-button:hover {
-  background-color: #357abd;
+.status-pill.on {
+  background: #e9edff;
+  color: #2a3ec2;
+  border-color: #cdd6ff;
 }
 
-.mypage-receive-reject-button {
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: bold;
-  padding: 10px 24px;
-  border-radius: 8px;
-  border: none;
-  background-color: #e74c3c;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
+.status-pill.off {
+  background: #f6f6f6;
+  color: #8e8e8e;
+  border-color: #e3e3e3;
 }
 
-.mypage-receive-reject-button:hover {
-  background-color: #c0392b;
-}
-
-.mypage-receive-close-button {
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: bold;
-  padding: 10px 24px;
-  border-radius: 8px;
-  border: 1px solid #d9d9d9;
-  background-color: #ffffff;
-  color: #333333;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
-}
-
-.mypage-receive-close-button:hover {
-  background-color: #f5f5f5;
+/* SweetAlert2 title 글씨 크기 조정 */
+.swal2-title {
+  font-size: 1.3rem !important;
 }
