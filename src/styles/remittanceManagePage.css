@@ -184,6 +184,142 @@
   transform: translateX(-32px);
 }
 
+.remittance-detail-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.remittance-detail-panel.open {
+  margin-top: 12px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  max-height: 420px;
+  opacity: 1;
+}
+
+.detail-header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 16px;
+}
+
+.detail-header-left {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: #888888;
+  margin-bottom: 4px;
+}
+
+.detail-name {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #222222;
+}
+
+.detail-value {
+  font-size: 1rem;
+  color: #222222;
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+  margin-top: 8px;
+}
+
+.detail-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fbff;
+  border-radius: 10px;
+  border: 1px dashed #d7e3f5;
+}
+
+.allowance-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.allowance-item {
+  flex: 1 1 140px;
+  min-width: 140px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555555;
+  background: #ffffff;
+}
+
+.allowance-item.on {
+  border-color: var(--color-main);
+  color: var(--color-main);
+  background: rgba(118, 159, 205, 0.08);
+}
+
+.allowance-item.off {
+  opacity: 0.6;
+}
+
+.allowance-rate {
+  font-weight: 600;
+}
+
+.detail-status-row {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid #d0d0d0;
+  color: #666666;
+  background: #ffffff;
+}
+
+.status-pill.on {
+  border-color: var(--color-main);
+  color: var(--color-main);
+  background: rgba(118, 159, 205, 0.1);
+}
+
+.status-pill.off {
+  opacity: 0.7;
+}
+
+.detail-note {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
 .no-data {
   text-align: center;
   color: #999999;

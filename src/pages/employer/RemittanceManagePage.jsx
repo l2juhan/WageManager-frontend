@@ -5,11 +5,14 @@ import {
   workplaceWorkers,
   remittanceData,
 } from "./dummyData";
-import { formatCurrency } from "./utils/formatUtils";
+import { formatCurrency, formatBreakTime } from "./utils/formatUtils";
+import { allowanceDefinitions } from "./utils/shiftUtils";
 
 export default function RemittanceManagePage() {
   const [selectedWorkplaceId, setSelectedWorkplaceId] = useState(1);
-  const [currentYear, setCurrentYear] = useState(() => new Date().getFullYear());
+  const [currentYear, setCurrentYear] = useState(() =>
+    new Date().getFullYear()
+  );
   const [currentMonth, setCurrentMonth] = useState(
     () => new Date().getMonth() + 1
   );
@@ -21,18 +24,15 @@ export default function RemittanceManagePage() {
     return workplaceWorkers[selectedWorkplaceId] || [];
   }, [selectedWorkplaceId]);
 
-  // 첫 번째 직원을 기본 선택 (workers가 변경될 때마다 자동 업데이트)
   const selectedWorker = useMemo(() => {
     return workers.length > 0 ? workers[0] : null;
   }, [workers]);
 
-  // selectedWorker를 state로 관리하기 위한 함수 (직원 클릭 시 사용)
   const [manuallySelectedWorker, setManuallySelectedWorker] = useState(null);
-
-  // 수동으로 선택된 직원이 있으면 그것을 사용, 없으면 기본값 사용
   const currentSelectedWorker = manuallySelectedWorker || selectedWorker;
 
-  // 선택된 직원의 근무 내역 가져오기
+  const [expandedRecordIndex, setExpandedRecordIndex] = useState(null);
+
   const workerData = useMemo(() => {
     if (!currentSelectedWorker || !remittanceData[selectedWorkplace]) {
       return null;
@@ -44,7 +44,6 @@ export default function RemittanceManagePage() {
     );
   }, [currentSelectedWorker, selectedWorkplace, currentYear, currentMonth]);
 
-  // 누적 급여 계산
   const totalWage = useMemo(() => {
     if (!currentSelectedWorker || !remittanceData[selectedWorkplace]) {
       return 0;
@@ -52,7 +51,6 @@ export default function RemittanceManagePage() {
     const monthKey = `${currentYear}-${String(currentMonth).padStart(2, "0")}`;
     const workerMonthData =
       remittanceData[selectedWorkplace]?.[currentSelectedWorker]?.[monthKey];
-    // 해당 월의 근무 내역이 있으면 totalWage 사용, 없으면 0
     return workerMonthData
       ? remittanceData[selectedWorkplace]?.[currentSelectedWorker]?.totalWage ||
           0
@@ -82,17 +80,21 @@ export default function RemittanceManagePage() {
   const handleWorkplaceChange = (e) => {
     const newWorkplaceId = Number(e.target.value);
     setSelectedWorkplaceId(newWorkplaceId);
-    // 근무지 변경 시 수동 선택 초기화 (기본값으로 돌아감)
     setManuallySelectedWorker(null);
+    setExpandedRecordIndex(null);
   };
 
   const handleWorkerClick = (workerName) => {
     setManuallySelectedWorker(workerName);
+    setExpandedRecordIndex(null);
   };
 
   const handleRemittance = () => {
-    // 송금하기 로직 추가 예정
     alert("카카오톡 송금하기 연결 예정");
+  };
+
+  const handleRecordClick = (index) => {
+    setExpandedRecordIndex((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -152,15 +154,128 @@ export default function RemittanceManagePage() {
         <div className="remittance-detail-list">
           {workerData && workerData.length > 0 ? (
             workerData.map((record, index) => (
-              <div key={index} className="remittance-detail-card">
-                <div className="detail-date">
-                  <span className="date-number">{record.date}</span>
-                  <span className="date-day">{record.day}</span>
+              <div key={`${record.date}-${record.startTime}`}>
+                <div
+                  className="remittance-detail-card"
+                  onClick={() => handleRecordClick(index)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleRecordClick(index);
+                    }
+                  }}
+                >
+                  <div className="detail-date">
+                    <span className="date-number">{record.date}</span>
+                    <span className="date-day">{record.day}</span>
+                  </div>
+                  <div className="detail-time">
+                    <span>
+                      {record.startTime} ~ {record.endTime}
+                    </span>
+                    <div
+                      className={`detail-pulse ${
+                        expandedRecordIndex === index ? "active" : ""
+                      }`}
+                    />
+                  </div>
+                  <div className="detail-wage">
+                    {formatCurrency(record.wage)}
+                  </div>
                 </div>
-                <div className="detail-time">
-                  {record.startTime} ~ {record.endTime}
+                <div
+                  className={`remittance-detail-panel ${
+                    expandedRecordIndex === index ? "open" : ""
+                  }`}
+                >
+                  <div className="detail-header">
+                    <div className="detail-header-left">
+                      <div>
+                        <h3 className="detail-name">
+                          {currentSelectedWorker || "-"}
+                        </h3>
+                      </div>
+                      <div>
+                        <p className="detail-value">
+                          {selectedWorkplace || "-"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="detail-grid">
+                    <div>
+                      <p className="detail-label">근무 날짜</p>
+                      <p className="detail-value">
+                        {currentYear}.{String(currentMonth).padStart(2, "0")}.
+                        {String(record.date).padStart(2, "0")} ({record.day})
+                      </p>
+                    </div>
+                    <div>
+                      <p className="detail-label">근무 시간</p>
+                      <p className="detail-value">
+                        {record.startTime} ~ {record.endTime}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="detail-label">시급</p>
+                      <p className="detail-value">
+                        {record.hourlyWage
+                          ? formatCurrency(record.hourlyWage)
+                          : "-"}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="detail-label">휴게 시간</p>
+                      <p className="detail-value">
+                        {formatBreakTime(record.breakMinutes)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="detail-section">
+                    <p className="detail-label">수당 정보</p>
+                    <ul className="allowance-list">
+                      {allowanceDefinitions.map(({ key, label }) => {
+                        const allowance = record.allowances?.[key] || {
+                          enabled: false,
+                          rate: 0,
+                        };
+                        return (
+                          <li
+                            key={key}
+                            className={`allowance-item ${
+                              allowance.enabled ? "on" : "off"
+                            }`}
+                          >
+                            <span>{label}</span>
+                            <span className="allowance-rate">
+                              {allowance.enabled
+                                ? `${allowance.rate}%`
+                                : "없음"}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div className="detail-status-row">
+                    <span
+                      className={`status-pill ${
+                        record.socialInsurance ? "on" : "off"
+                      }`}
+                    >
+                      4대보험 {record.socialInsurance ? "적용" : "미적용"}
+                    </span>
+                    <span
+                      className={`status-pill ${
+                        record.withholdingTax ? "on" : "off"
+                      }`}
+                    >
+                      소득세 {record.withholdingTax ? "적용" : "미적용"}
+                    </span>
+                  </div>
                 </div>
-                <div className="detail-wage">{formatCurrency(record.wage)}</div>
               </div>
             ))
           ) : (
