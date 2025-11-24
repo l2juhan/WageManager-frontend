@@ -175,11 +175,6 @@ export default function RemittanceManagePage() {
                     <span>
                       {record.startTime} ~ {record.endTime}
                     </span>
-                    <div
-                      className={`detail-pulse ${
-                        expandedRecordIndex === index ? "active" : ""
-                      }`}
-                    />
                   </div>
                   <div className="detail-wage">
                     {formatCurrency(record.wage)}
