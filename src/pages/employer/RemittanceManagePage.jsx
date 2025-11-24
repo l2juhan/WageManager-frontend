@@ -1,6 +1,10 @@
 import { useState, useMemo } from "react";
 import "../../styles/remittanceManagePage.css";
-import { initialWorkplaces, workplaceWorkers, remittanceData } from "./dummyData";
+import {
+  initialWorkplaces,
+  workplaceWorkers,
+  remittanceData,
+} from "./dummyData";
 import { formatCurrency } from "./utils/formatUtils";
 
 export default function RemittanceManagePage() {
@@ -86,7 +90,7 @@ export default function RemittanceManagePage() {
 
   const handleRemittance = () => {
     // 송금하기 로직 추가 예정
-    alert("송금하기 기능은 준비 중입니다.");
+    alert("카카오톡 송금하기 연결 예정");
   };
 
   return (

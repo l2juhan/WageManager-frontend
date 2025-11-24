@@ -50,13 +50,13 @@
 }
 
 .worker-item:hover {
-  background: #e8f0fe;
-  color: #1976d2;
+  background: var(--color-background);
+  color: var(--color-main);
 }
 
 .worker-item.selected {
-  background: #1976d2;
-  color: #ffffff;
+  background: var(--color-main);
+  color: var(--color-background);
   font-weight: 600;
 }
 
@@ -161,7 +161,7 @@
 .detail-wage {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1976d2;
+  color: var(--color-main);
   min-width: 100px;
   text-align: right;
 }
@@ -197,16 +197,16 @@
 }
 
 .summary-amount {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #1976d2;
+  color: var(--color-main);
   text-align: center;
 }
 
 .remittance-button {
   width: 100%;
   padding: 16px;
-  background: #1976d2;
+  background: var(--color-main);
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -214,12 +214,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .remittance-button:hover {
   background: #1565c0;
-  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
