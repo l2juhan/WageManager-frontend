@@ -1,0 +1,382 @@
+.remittance-manage-page {
+  display: flex;
+  gap: 24px;
+  padding: 24px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: calc(100vh - 70px);
+  background: #f7fbfc;
+}
+
+/* 왼쪽 패널: 근무지 선택 + 직원 리스트 */
+.remittance-left-panel {
+  flex: 0 0 22%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-self: stretch;
+}
+
+.remittance-workplace-select {
+  margin-bottom: 24px;
+}
+
+.workplace-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.remittance-worker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.worker-item {
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  color: #333333;
+  background: #f5f5f5;
+}
+
+.worker-item:hover {
+  background: var(--color-background);
+  color: var(--color-main);
+}
+
+.worker-item.selected {
+  background: var(--color-main);
+  color: var(--color-background);
+  font-weight: 600;
+}
+
+/* 중앙 패널: 날짜 네비게이션 + 근무 상세 내역 */
+.remittance-center-panel {
+  flex: 1 1 56%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.remittance-month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.month-nav-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.month-nav-button:hover {
+  background: #e0e0e0;
+}
+
+.month-display {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333333;
+  min-width: 150px;
+  text-align: center;
+}
+
+.remittance-detail-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 24px 0;
+}
+
+.remittance-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.remittance-detail-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.remittance-detail-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #d0d0d0;
+}
+
+.detail-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  padding-right: 24px;
+  margin-right: 24px;
+  position: relative;
+}
+
+.detail-date::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e0e0e0;
+}
+
+.date-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+.date-day {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-top: 4px;
+}
+
+.detail-time {
+  flex: 1;
+  font-size: 1.3rem;
+  color: #333333;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-wage {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-main);
+  min-width: 80px;
+  text-align: left;
+  transform: translateX(-32px);
+}
+
+.remittance-detail-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.remittance-detail-panel.open {
+  margin-top: 12px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  max-height: 420px;
+  opacity: 1;
+}
+
+.detail-header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 16px;
+}
+
+.detail-header-left {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: #888888;
+  margin-bottom: 4px;
+}
+
+.detail-name {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #222222;
+}
+
+.detail-value {
+  font-size: 1rem;
+  color: #222222;
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+  margin-top: 8px;
+}
+
+.detail-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fbff;
+  border-radius: 10px;
+  border: 1px dashed #d7e3f5;
+}
+
+.allowance-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.allowance-item {
+  flex: 1 1 140px;
+  min-width: 140px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555555;
+  background: #ffffff;
+}
+
+.allowance-item.on {
+  border-color: var(--color-main);
+  color: var(--color-main);
+  background: rgba(118, 159, 205, 0.08);
+}
+
+.allowance-item.off {
+  opacity: 0.6;
+}
+
+.allowance-rate {
+  font-weight: 600;
+}
+
+.detail-status-row {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid #d0d0d0;
+  color: #666666;
+  background: #ffffff;
+}
+
+.status-pill.on {
+  border-color: var(--color-main);
+  color: var(--color-main);
+  background: rgba(118, 159, 205, 0.1);
+}
+
+.status-pill.off {
+  opacity: 0.7;
+}
+
+.detail-note {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+.no-data {
+  text-align: center;
+  color: #999999;
+  padding: 40px 0;
+  font-size: 1rem;
+}
+
+/* 오른쪽 패널: 누적 급여 + 송금하기 */
+.remittance-right-panel {
+  flex: 0 0 22%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.remittance-summary-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.summary-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 24px 0;
+}
+
+.summary-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #104478;
+  text-align: center;
+}
+
+.remittance-button {
+  width: 100%;
+  padding: 16px;
+  background: var(--color-main);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.remittance-button:hover {
+  background: #1565c0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.remittance-button:active {
+  transform: translateY(0);
+}
